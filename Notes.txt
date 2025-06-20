@@ -1,0 +1,8 @@
+command To login Linux instance using the .pem key via public IP
+Make sure ICMP traffic is allowed in Security group tagged to the instance
+
+hit this command in powershell to login remotely to Terminal
+
+Syntax : ssh -i <c:\temp\key.pem> ec2-user@<public IP>
+
+Example : ssh -i C:\Users\Satz\Downloads\Gee_key001.pem ec2-user@35.153.67.74
