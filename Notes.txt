@@ -6,3 +6,7 @@ hit this command in powershell to login remotely to Terminal
 Syntax : ssh -i <c:\temp\key.pem> ec2-user@<public IP>
 
 Example : ssh -i C:\Users\Satz\Downloads\Gee_key001.pem ec2-user@35.153.67.74
+
+
+Commandd to create new file in windows
+New-Item "Filename.extension" -itemtype "File"
