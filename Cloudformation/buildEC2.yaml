@@ -1,0 +1,30 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Simple EC2 instance setup using CloudFormation
+
+Resources:
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro  # Free tier eligible
+      ImageId: ami-0c02fb55956c7d316  # Amazon Linux 2 AMI (Region-specific, this one is for us-east-1)
+      KeyName: Gee_key001     # Replace with your existing EC2 key pair name
+      SecurityGroups:
+        - !Ref MySecurityGroup
+
+  MySecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSH access
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0  # Open SSH to everyone (not safe for production)
+
+Outputs:
+  InstanceId:
+    Description: EC2 Instance ID
+    Value: !Ref MyEC2Instance
+  PublicIP:
+    Description: Public IP Address of the EC2 instance
+    Value: !GetAtt MyEC2Instance.PublicIp
